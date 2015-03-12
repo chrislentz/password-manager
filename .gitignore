@@ -6,3 +6,4 @@
 .idea
 
 /resources/assets/bower/
+npm-debug.log
