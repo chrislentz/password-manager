@@ -6,6 +6,11 @@
 @import "../bower/fontawesome/scss/font-awesome";
 
 /*----------------------------------------------------------------------------
+ Foundation Overrides
+-----------------------------------------------------------------------------*/
+$alert-font-size: 1rem;
+
+/*----------------------------------------------------------------------------
  Import Foundation
 -----------------------------------------------------------------------------*/
 @import 'alert-boxes';
@@ -54,7 +59,8 @@ body.small {
     }
 
     .form-field.button-container {
-      margin-top: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
 
       .button {
         margin-right: 20px;

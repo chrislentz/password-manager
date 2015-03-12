@@ -1,14 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use Input, Validator;
+use Input, Validator, Hash;
 
 use App\Models\User;
 
 class InstallController extends Controller {
-
-	public function __construct() {
-		$this->middleware('uninstalled');
-	}
 
 	public function getInstallForm() {
 		return view('install');
@@ -31,7 +27,8 @@ class InstallController extends Controller {
         $user->first_name = Input::get('first_name');
         $user->last_name = Input::get('last_name');
         $user->email = Input::get('email');
-        $user->password = bcrypt('first_name');
+        $user->password = Hash::make(Input::get('password'));
+        $user->confirm = 1;
         $user->role_id = 1;
 
         $user->save();
@@ -40,7 +37,7 @@ class InstallController extends Controller {
             return redirect()->back()->with('message_error', 'An unknown error occurred.')->withInput(Input::except('password'));;
         }
         else {
-            return redirect()->route('sign-in')->with('message_success', 'Password Manager installed successfully.');
+            return redirect()->route('sign-in')->with('message_success', 'Password Manager installed successfully. Please sign in below.');
         }
     }
 
